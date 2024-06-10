@@ -5,6 +5,10 @@ const COLORS = ['#A000FF', '#FF9304', '#FDE006'];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+    
+    if (percent <= 0) {
+        return null; // Don't render label if percent is 0 or negative
+    }
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
